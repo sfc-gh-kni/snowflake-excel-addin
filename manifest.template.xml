@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Snowflake Excel Add-in — Manifest Template
+  ============================================
+  Before using this manifest:
+
+  1. Replace ADDIN_HOST_URL with your actual host:
+       - Local dev:  https://localhost:3000
+       - SPCS prod:  https://<hash>-<account>.snowflakecomputing.app
+
+  2. Replace SNOWFLAKE_ACCOUNT_URL with:
+       - https://<account>.snowflakecomputing.com
+
+  3. Save as manifest.xml (do not commit manifest.xml with real URLs —
+     each deployer generates their own from this template).
+-->
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+
+  <Id>a1b2c3d4-e5f6-7890-abcd-ef1234567890</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Snowflake</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Snowflake Excel Add-in"/>
+  <Description DefaultValue="Connect to Snowflake and bring governed data directly into Excel."/>
+  <IconUrl DefaultValue="ADDIN_HOST_URL/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="ADDIN_HOST_URL/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://docs.snowflake.com"/>
+
+  <AppDomains>
+    <AppDomain>ADDIN_HOST_URL</AppDomain>
+    <AppDomain>SNOWFLAKE_ACCOUNT_URL</AppDomain>
+    <!-- Snowflake OAuth endpoints -->
+    <AppDomain>https://login.snowflake.com</AppDomain>
+    <AppDomain>https://id.snowflakecomputing.com</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="SharedRuntime" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="ADDIN_HOST_URL/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+
+        <Runtimes>
+          <Runtime resid="Taskpane.Url" lifetime="long"/>
+        </Runtimes>
+
+        <AllFormFactors>
+          <ExtensionPoint xsi:type="CustomFunctions">
+            <Script>
+              <SourceLocation resid="Functions.Script.Url"/>
+            </Script>
+            <Page>
+              <SourceLocation resid="Taskpane.Url"/>
+            </Page>
+            <Metadata>
+              <SourceLocation resid="Functions.Metadata.Url"/>
+            </Metadata>
+            <Namespace resid="Functions.Namespace"/>
+          </ExtensionPoint>
+        </AllFormFactors>
+
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Taskpane.Url"/>
+
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="SnowflakeGroup">
+                <Label resid="CommandsGroup.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16"/>
+                  <bt:Image size="32" resid="Icon.32x32"/>
+                  <bt:Image size="80" resid="Icon.80x80"/>
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="ADDIN_HOST_URL/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="ADDIN_HOST_URL/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="ADDIN_HOST_URL/assets/icon-80.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="Functions.Script.Url"    DefaultValue="ADDIN_HOST_URL/functions.js"/>
+        <bt:Url id="Functions.Metadata.Url"  DefaultValue="ADDIN_HOST_URL/functions.json"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://docs.snowflake.com"/>
+        <bt:Url id="Taskpane.Url"            DefaultValue="ADDIN_HOST_URL/taskpane.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="Functions.Namespace"    DefaultValue="SNOWFLAKE"/>
+        <bt:String id="GetStarted.Title"       DefaultValue="Get started with the Snowflake Excel Add-in!"/>
+        <bt:String id="CommandsGroup.Label"    DefaultValue="Snowflake"/>
+        <bt:String id="TaskpaneButton.Label"   DefaultValue="Snowflake"/>
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Your Snowflake Excel Add-in loaded successfully. Go to the HOME tab and click 'Snowflake' to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the Snowflake Excel Add-in"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

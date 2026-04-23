@@ -1,0 +1,40 @@
+{
+  "name": "snowflake-excel-addin",
+  "version": "1.0.0",
+  "description": "Snowflake Excel Add-in — bring governed Snowflake data directly into Excel",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run webpack:watch\"",
+    "server": "HTTPS=true node server/index.js",
+    "webpack:watch": "webpack --watch --mode development",
+    "build": "webpack --mode production",
+    "setup-certs": "node scripts/setup-certs.js",
+    "generate-icons": "node scripts/generate-icons.js",
+    "generate-manifest": "node scripts/generate-manifest.js",
+    "start": "npm run setup-certs && npm run dev"
+  },
+  "dependencies": {
+    "@microsoft/office-js": "^1.1.0",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/office-js": "^1.0.589",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "canvas": "^3.2.3",
+    "concurrently": "^8.0.0",
+    "css-loader": "^6.8.0",
+    "html-webpack-plugin": "^5.5.0",
+    "office-addin-dev-certs": "^1.11.0",
+    "style-loader": "^3.3.0",
+    "ts-loader": "^9.4.0",
+    "typescript": "^5.0.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0"
+  }
+}

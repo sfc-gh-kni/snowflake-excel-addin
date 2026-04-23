@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="none"/>
+  <!-- Snowflake icon -->
+  <g transform="translate(8, 8)" fill="#29B5E8">
+    <polygon points="22,0 25,12 34,5 29,16 41,13 31,20 41,27 29,24 34,35 25,28 22,40 19,28 10,35 15,24 3,27 13,20 3,13 15,16 10,5 19,12" />
+  </g>
+  <!-- Wordmark -->
+  <text x="55" y="38" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22" font-weight="600" fill="#1A2B4A">Snowflake</text>
+</svg>

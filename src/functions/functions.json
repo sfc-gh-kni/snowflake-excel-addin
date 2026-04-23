@@ -1,0 +1,56 @@
+{
+  "functions": [
+    {
+      "id": "TABLE",
+      "name": "TABLE",
+      "description": "Import rows from a Snowflake table into Excel. Returns headers + data rows.",
+      "parameters": [
+        {
+          "name": "tableRef",
+          "description": "Fully qualified table name: DATABASE.SCHEMA.TABLE",
+          "type": "string"
+        },
+        {
+          "name": "columns",
+          "description": "Optional 2D array of column names to include",
+          "type": "any",
+          "optional": true,
+          "dimensionality": "matrix"
+        },
+        {
+          "name": "limit",
+          "description": "Maximum number of rows to return (default 1000)",
+          "type": "number",
+          "optional": true
+        }
+      ],
+      "result": {
+        "type": "any",
+        "dimensionality": "matrix"
+      }
+    },
+    {
+      "id": "SQL",
+      "name": "SQL",
+      "description": "Run a Snowflake SQL query and return the results. Use :param_name for parameters.",
+      "parameters": [
+        {
+          "name": "query",
+          "description": "SQL query text. Use :param_name for named parameters.",
+          "type": "string"
+        },
+        {
+          "name": "params",
+          "description": "Parameter pairs as a 2D range: [[name, value], ...]",
+          "type": "any",
+          "optional": true,
+          "dimensionality": "matrix"
+        }
+      ],
+      "result": {
+        "type": "any",
+        "dimensionality": "matrix"
+      }
+    }
+  ]
+}
