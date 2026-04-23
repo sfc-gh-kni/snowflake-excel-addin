@@ -1,6 +1,9 @@
 # Snowflake Excel Add-in
 
-A Microsoft Excel Add-in that connects Snowflake directly to Excel — inspired by the Databricks Excel Add-in. Browse your Snowflake catalog, import tables and views, write SQL queries, and use native Excel formulas to pull live Snowflake data, all inside Excel.
+[![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)](https://www.snowflake.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+> **A Microsoft Excel Add-in that connects Snowflake directly to Excel. Browse your Snowflake catalog, import tables and views, write SQL queries, and use native Excel formulas to pull live Snowflake data, all inside Excel.**
 
 Designed to be deployed on **Snowpark Container Services (SPCS)** so it lives entirely within your Snowflake account — no external infrastructure required.
 
